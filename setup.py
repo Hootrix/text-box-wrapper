@@ -6,12 +6,13 @@ with open(os.path.join(os.path.dirname(__file__), "README.md"), encoding="utf-8"
 
 setup(
     name="text-box-wrapper",
-    version="0.1.1",
+    version="0.1.5",
     description="A simple package to wrap text with ASCII art",
     author="Ho",
     author_email="hhtjim@gmail.com",
     packages=find_packages(),
     install_requires=[
+        "wcwidth"
     ],
     classifiers=[
         "Development Status :: 3 - Alpha",

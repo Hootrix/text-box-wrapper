@@ -1,5 +1,5 @@
 import re
-import unicodedata
+from wcwidth import wcwidth
 from typing import Callable
 
 def wrap(min_padding=10, vertical_padding=None, border_string="#" * 5, alignment="center"):
@@ -11,12 +11,8 @@ def wrap(min_padding=10, vertical_padding=None, border_string="#" * 5, alignment
     return decorator
 
 def wrap_with_ascii_art(text, min_padding=10, vertical_padding=None, border_string="#" * 5, alignment="center") -> str:
-    def get_char_width(char):
-        width = unicodedata.east_asian_width(char)
-        return 2 if width in 'FWA' else 1
-
     def get_text_width(text):
-        return sum(get_char_width(char) for char in text)
+        return sum(wcwidth(char) for char in text)
     
     padding_char = " "
     ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')  # 用于匹配ANSI转义序列的正则表达式

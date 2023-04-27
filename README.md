@@ -39,13 +39,25 @@ print(wrapped_text)
 You can customize the padding, border string, 
 and alignment:
 ```
-from utils.common import wrap,wrap_with_ascii_art
+from text_box_wrapper import wrap_with_ascii_art
 
 text = "你好，成都"
 border_string = "#"
 wrapped_text = wrap_with_ascii_art(text, min_padding=5, vertical_padding=2, border_string=border_string, alignment="center")
 print(wrapped_text)
 
+```
+## Example output:
+
+```
+######################
+#                    #
+#                    #
+#     你好，成都       #
+#                    #
+#                    #
+######################
+```
 
 # Using the decorator
 You can also use the `wrap` decorator to automatically wrap the output of a function:
@@ -69,7 +81,6 @@ print(greet("John"))
 *       Hello, John!       *
 *                          *
 ****************************
-
 ```
 
 # Contributing
